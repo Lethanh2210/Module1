@@ -20,18 +20,38 @@ class BookManager{
             }
         }
 
-        document.getElementById('book').innerHTML += html;
+        document.getElementById('book1').innerHTML = html;
     }
     add(id,name,year,number){
         let book = new Book(id, name, year, number);
         this.books.push(book);
         this.showListProduct();
-        this.clearInput();
     }
-    clearInput(){
-        document.getElementById('id').value = null
-        document.getElementById('name').value = null
-        document.getElementById('year').value = null
-        document.getElementById('number').value = null
+    borrowBook(name,number){
+        for (let i = 0; i < this.books.length; i++) {
+            if(this.books[i].name === name){
+                this.books[i].number -= number;
+            }
+        }
     }
+    findMaxBook(){
+        let max = this.books[0].number;
+        for (let i = 1; i < this.books.length; i++) {
+            if(this.books[i].number > max ){
+                max = this.books[i].number;
+            }
+        }
+        for (let i = 0; i < this.books.length; i++) {
+            if(this.books[i].number === max){
+                console.log(this.books[i]);
+            }
+        }
+
+    }
+    setStatus(){
+        for (let i = 0; i < this.books.length; i++) {
+            this.books[i].setStatus();
+        }
+    }
+
 }

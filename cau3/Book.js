@@ -10,5 +10,6 @@ class Book{
         if(this.number === 0){
             this.status = false;
         }
+        else this.status = true;
     }
 }
